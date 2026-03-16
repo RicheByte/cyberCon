@@ -4,7 +4,8 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./home.jsx",
-    "./innovation.jsx"
+    "./innovation.jsx",
+    "./register.jsx"
   ],
   theme: {
     extend: {
