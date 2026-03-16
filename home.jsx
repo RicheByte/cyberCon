@@ -151,8 +151,7 @@ export default function App() {
           <video 
             ref={videoRef}
             src={bgVid} 
-            className="absolute inset-0 w-full h-full object-cover object-center opacity-90 mix-blend-lighten"
-            style={{ filter: 'contrast(1.2) brightness(0.9) grayscale(0.2)' }}
+            className="absolute inset-0 w-full h-full object-cover object-center"
             muted
             playsInline
             preload="auto"
@@ -168,8 +167,8 @@ export default function App() {
         {/* Navbar */}
         <header className="relative z-20 flex justify-between items-center w-full">
           {/* Logo */}
-          <div className="text-lg md:text-2xl font-bold tracking-tight">
-            CRYPTX<sup className="text-[10px] md:text-xs font-normal">2.0</sup>
+          <div className="flex items-center">
+            <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-10 md:h-14 w-auto object-contain" />
           </div>
 
           {/* Center Nav — desktop only */}
@@ -287,8 +286,7 @@ export default function App() {
 
         </main>
         
-        {/* Optional: Subtle Vignette to darken edges slightly */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none bg-[radial-gradient(circle_at_center,transparent_40%,rgba(3,6,13,0.8)_100%)] z-[15]" />
+
       </div>
       </div>
 
@@ -403,7 +401,7 @@ export default function App() {
           {[...Array(2)].map((_, setIdx) => (
             <div key={setIdx} className="flex items-center gap-24 px-12">
               {[
-                { src: "/logos/CRYPTX2.0 Logo.png",      label: "CRYPTX2.0" },
+                { src: "/logos/Cybercon'26 Logo.png",      label: "CYBERCON'26" },
                 { src: '/logos/Hackathon Logo.png',        label: 'Hackathon' },
                 { src: '/logos/Designathon Logo.png',      label: 'Designathon' },
                 { src: '/logos/Ideathon Logo.png',         label: 'Ideathon' },
@@ -430,7 +428,7 @@ export default function App() {
             <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-4">02 — Impact Metrics</p>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-[-0.04em] mb-4 leading-[0.9] text-white">Impact<br />Metrics.</h2>
             <p className="text-gray-400 font-light text-sm max-w-[280px] leading-relaxed">
-              Stats defining the CRYPTX arena. The magnitude of the convergence is undeniable.
+              Stats defining the CYBERCON'26 arena. The magnitude of the convergence is undeniable.
             </p>
           </div>
 
@@ -617,8 +615,8 @@ export default function App() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 mb-16 md:mb-24">
             <div className="col-span-2">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-4 md:mb-6 text-white">
-                CRYPTX<sup className="text-sm md:text-base font-normal">2.0</sup>
+              <div className="mb-4 md:mb-6">
+                <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-12 md:h-16 w-auto object-contain" />
               </div>
               <p className="text-gray-300 text-sm max-w-sm leading-relaxed font-light">
                 Sri Lanka's only event where Builders, Designers, and Hackers compete on the same stage.
