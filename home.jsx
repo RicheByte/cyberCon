@@ -6,8 +6,43 @@ import bgVid from './vid.mp4';
 export default function App() {
   const [openFaq, setOpenFaq] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeTimeline, setActiveTimeline] = useState('Overall');
   const videoRef = useRef(null);
   const heroContainerRef = useRef(null);
+
+  const timelines = {
+    "Overall": [
+      { date: "22 Feb 2026", title: "Registration Opens", desc: "The portal goes live. Secure your slot early before it fills up.", baseDot: "bg-white", hoverDot: "group-hover:scale-150" },
+      { date: "07 Mar 2026", title: "Designathon Workshop", desc: "Introductory session on UI/UX principles. Gain intel prior to execution.", baseDot: "bg-white/30", hoverDot: "group-hover:bg-white/60 group-hover:scale-150" },
+      { date: "14 Mar 2026", title: "Registration Closes", desc: "Final deadline. All pending slots will be permanently closed.", baseDot: "bg-white/30", hoverDot: "group-hover:bg-white/60 group-hover:scale-150" },
+      { date: "21 Mar 2026", title: "Preliminary Rounds", desc: "Qualifiers begin. CTF officially starts on the 28th.", baseDot: "bg-white/30", hoverDot: "group-hover:bg-white/60 group-hover:scale-150" },
+      { date: "04 Apr 2026", title: "Grand Finale", desc: "Finalists converge on-site at the Faculty of Technology, USJ.", baseDot: "bg-white shadow-[0_0_20px_rgba(255,255,255,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
+    ],
+    "Hackathon": [
+      { date: "22 Feb 2026", title: "Hackathon Registration", desc: "Form your team of 2-4 members.", baseDot: "bg-blue-500", hoverDot: "group-hover:bg-blue-400 group-hover:scale-150" },
+      { date: "14 Mar 2026", title: "Registration Closes", desc: "Final call for all Hackathon participants.", baseDot: "bg-blue-500/50", hoverDot: "group-hover:bg-blue-400/80 group-hover:scale-150" },
+      { date: "21 Mar 2026", title: "Initial Submissions", desc: "First round of prototype reviews.", baseDot: "bg-blue-500/50", hoverDot: "group-hover:bg-blue-400/80 group-hover:scale-150" },
+      { date: "04 Apr 2026", title: "Live Coding & Demo", desc: "24-hour sprint and final presentations.", baseDot: "bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
+    ],
+    "Designathon": [
+      { date: "22 Feb 2026", title: "Designathon Registration", desc: "Individual or up to 3 members.", baseDot: "bg-purple-500", hoverDot: "group-hover:bg-purple-400 group-hover:scale-150" },
+      { date: "07 Mar 2026", title: "UI/UX Workshop", desc: "Learn the latest trends and toolkits.", baseDot: "bg-purple-500/50", hoverDot: "group-hover:bg-purple-400/80 group-hover:scale-150" },
+      { date: "14 Mar 2026", title: "Case Study Release", desc: "Problem statements provided to participants.", baseDot: "bg-purple-500/50", hoverDot: "group-hover:bg-purple-400/80 group-hover:scale-150" },
+      { date: "04 Apr 2026", title: "Final Pitch", desc: "Present interactive prototypes.", baseDot: "bg-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
+    ],
+    "Ideathon": [
+      { date: "22 Feb 2026", title: "Ideathon Registration", desc: "Register your visionary ideas. Teams of 2-4.", baseDot: "bg-amber-500", hoverDot: "group-hover:bg-amber-400 group-hover:scale-150" },
+      { date: "15 Mar 2026", title: "Proposal Submission", desc: "Submit your comprehensive business plan.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "25 Mar 2026", title: "Shortlist Announcement", desc: "Top teams selected for the finale.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "04 Apr 2026", title: "Investor Pitch", desc: "Pitch your ideas to industry experts.", baseDot: "bg-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
+    ],
+    "CTF": [
+      { date: "22 Feb 2026", title: "CTF Registration", desc: "Open to all operators.", baseDot: "bg-red-500", hoverDot: "group-hover:bg-red-400 group-hover:scale-150" },
+      { date: "14 Mar 2026", title: "Registration Closes", desc: "Finalise teams and credentials.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
+      { date: "28 Mar 2026", title: "Qualifying Flags", desc: "Initial stage of exploitation begins.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
+      { date: "04 Apr 2026", title: "Final Assault", desc: "Intense on-site cyber warfare.", baseDot: "bg-red-500 shadow-[0_0_20px_rgba(239,68,68,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
+    ]
+  };
 
   useEffect(() => {
     let targetTime = 0;
@@ -177,14 +212,13 @@ export default function App() {
             <a href="#tracks" className="hover:text-white transition-colors">Tracks</a>
             <a href="#timeline" className="hover:text-white transition-colors">Timeline</a>
             <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-            <Link to="/innovation" className="hover:text-purple-300 transition-colors">Innovation</Link>
           </nav>
 
           {/* Right: desktop button + mobile hamburger */}
           <div className="flex items-center gap-4">
-            <button className="hidden md:block border border-white/30 rounded-full px-6 py-2 text-[10px] font-['Space_Grotesk',sans-serif] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+            <Link to="/register" className="hidden md:block border border-white/30 rounded-full px-6 py-2 text-[10px] font-['Space_Grotesk',sans-serif] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
               Secure Access
-            </button>
+            </Link>
             {/* Hamburger — mobile only */}
             <button
               className="md:hidden flex flex-col gap-[5px] p-2"
@@ -205,10 +239,9 @@ export default function App() {
             <a href="#tracks" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Tracks</a>
             <a href="#timeline" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Timeline</a>
             <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Contact</a>
-            <Link to="/innovation" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-purple-300 hover:text-purple-200 transition-colors">Innovation</Link>
-            <button className="mt-2 border border-white/30 rounded-full px-6 py-3 text-[10px] font-['Space_Grotesk'] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 w-full">
+            <Link to="/register" className="mt-2 text-center border border-white/30 rounded-full px-6 py-3 text-[10px] font-['Space_Grotesk'] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 w-full">
               Secure Access
-            </button>
+            </Link>
           </div>
         )}
 
@@ -464,49 +497,49 @@ export default function App() {
         {/* LEFT — timeline content */}
         <div className="w-full lg:w-1/2 py-12 md:py-32 px-6 md:px-14 lg:pl-52 lg:pr-10">
           
-          <div className="mb-10 md:mb-20">
+          <div className="mb-10 md:mb-16">
             <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-3">03 — Schedule</p>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] mb-3 text-white">Timeline.</h2>
             <p className="text-gray-400 font-light text-sm">Dates are locked. Prepare your vectors. Execution begins shortly.</p>
           </div>
 
-          <div className="relative border-l border-white/10 ml-[2px] space-y-10 md:space-y-20 py-4 md:py-10">
-            <div className="absolute top-0 left-[-1px] w-[2px] h-[30%] bg-gradient-to-b from-white/30 to-transparent"></div>
+          <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-10 md:mb-16 overflow-x-auto no-scrollbar py-2">
+            {Object.keys(timelines).map((track) => (
+              <button
+                key={track}
+                onClick={() => setActiveTimeline(track)}
+                className={`px-5 py-2 md:px-6 md:py-2.5 rounded-full text-[10px] md:text-xs font-['Space_Grotesk'] uppercase tracking-widest whitespace-nowrap transition-all duration-300 ${
+                  activeTimeline === track 
+                  ? 'bg-white text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.3)]' 
+                  : 'border border-white/20 text-gray-400 hover:text-white hover:border-white/50'
+                }`}
+              >
+                {track}
+              </button>
+            ))}
+          </div>
+
+          <div className="relative border-l border-white/10 ml-[2px] space-y-10 md:space-y-16 py-4">
+            <div className="absolute top-0 left-[-1px] w-[2px] h-[30%] bg-gradient-to-b from-white/30 to-transparent transition-all duration-500"></div>
             
-            <div className="relative pl-6 md:pl-16 group">
-              <div className="absolute top-[7px] -left-[4px] w-2 h-2 rounded-full bg-white group-hover:scale-150 transition-all duration-300" />
-              <div className="text-[10px] font-['Space_Grotesk'] tracking-[0.2em] text-gray-400 mb-1">22 Feb 202.0</div>
-              <h4 className="text-xl md:text-3xl font-bold tracking-tight mb-1 text-white">Registration Opens</h4>
-              <p className="text-gray-500 text-xs md:text-sm font-light leading-relaxed">The portal goes live. Secure your slot early before it fills up.</p>
-            </div>
-
-            <div className="relative pl-6 md:pl-16 group">
-              <div className="absolute top-[7px] -left-[4px] w-2 h-2 rounded-full bg-white/30 group-hover:bg-white/60 transition-all duration-300" />
-              <div className="text-[10px] font-['Space_Grotesk'] tracking-[0.2em] text-gray-400 mb-1">07 Mar 202.0</div>
-              <h4 className="text-xl md:text-3xl font-bold tracking-tight mb-1 text-white/90">Designathon Workshop</h4>
-              <p className="text-gray-500 text-xs md:text-sm font-light leading-relaxed">Introductory session on UI/UX principles. Gain intel prior to execution.</p>
-            </div>
-
-            <div className="relative pl-6 md:pl-16 group">
-              <div className="absolute top-[7px] -left-[4px] w-2 h-2 rounded-full bg-white/30 group-hover:bg-white/60 transition-all duration-300" />
-              <div className="text-[10px] font-['Space_Grotesk'] tracking-[0.2em] text-gray-400 mb-1">14 Mar 202.0</div>
-              <h4 className="text-xl md:text-3xl font-bold tracking-tight mb-1 text-white/90">Registration Closes</h4>
-              <p className="text-gray-500 text-xs md:text-sm font-light leading-relaxed">Final deadline. All pending slots will be permanently closed.</p>
-            </div>
-
-            <div className="relative pl-6 md:pl-16 group">
-              <div className="absolute top-[7px] -left-[4px] w-2 h-2 rounded-full bg-white/30 group-hover:bg-white/60 transition-all duration-300" />
-              <div className="text-[10px] font-['Space_Grotesk'] tracking-[0.2em] text-gray-400 mb-1">21 Mar 202.0</div>
-              <h4 className="text-xl md:text-3xl font-bold tracking-tight mb-1 text-white/90">Preliminary Rounds</h4>
-              <p className="text-gray-500 text-xs md:text-sm font-light leading-relaxed">Qualifiers begin. CTF officially starts on the 28th.</p>
-            </div>
-
-            <div className="relative pl-6 md:pl-16 pt-2 md:pt-4 group">
-              <div className="absolute top-[22px] md:top-[28px] -left-[5px] w-3 h-3 rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.5)] group-hover:scale-125 transition-all duration-300" />
-              <div className="inline-block border border-white/20 rounded-full px-3 py-1 text-[10px] font-['Space_Grotesk'] tracking-[0.15em] text-white/70 mb-2">04 Apr 202.0</div>
-              <h4 className="text-3xl md:text-5xl font-bold tracking-tight mb-2 text-white">Grand Finale</h4>
-              <p className="text-gray-400 text-xs md:text-sm font-light leading-relaxed">Finalists converge on-site at the Faculty of Technology, USJ.</p>
-            </div>
+            {timelines[activeTimeline].map((item, idx) => (
+              <div key={idx} className="relative pl-6 md:pl-16 group">
+                <div className={`absolute -left-[4px] w-2 h-2 rounded-full transition-all duration-300 ${item.baseDot} ${item.hoverDot} ${item.highlight ? 'top-[22px] md:top-[28px] -left-[5px] w-3 h-3' : 'top-[7px]'}`} />
+                
+                {item.highlight ? (
+                  <>
+                    <div className="inline-block border border-white/20 rounded-full px-3 py-1 text-[10px] font-['Space_Grotesk'] tracking-[0.15em] text-white/70 mb-2">{item.date}</div>
+                    <h4 className="text-3xl md:text-5xl font-bold tracking-tight mb-2 text-white">{item.title}</h4>
+                  </>
+                ) : (
+                  <>
+                    <div className="text-[10px] font-['Space_Grotesk'] tracking-[0.2em] text-gray-400 mb-1">{item.date}</div>
+                    <h4 className="text-xl md:text-3xl font-bold tracking-tight mb-1 text-white/90">{item.title}</h4>
+                  </>
+                )}
+                <p className="text-gray-500 text-xs md:text-sm font-light leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
 
           </div>
         </div>
@@ -521,7 +554,7 @@ export default function App() {
           />
         </div>
         {/* Desktop view */}
-        <div className="hidden lg:block w-1/2 relative overflow-hidden min-h-[600px]">
+        <div className="hidden lg:block w-1/2 relative overflow-hidden min-h-[600px] lg:absolute lg:top-0 lg:right-0 lg:h-full">
           <img
             src="/bending.png"
             alt=""
@@ -630,7 +663,6 @@ export default function App() {
                 <li><a href="#tracks" className="hover:text-white transition-colors">The Disciplines</a></li>
                 <li><a href="#timeline" className="hover:text-white transition-colors">Timeline</a></li>
                 <li><a href="#contact" className="hover:text-white transition-colors">Team</a></li>
-                <li><Link to="/innovation" className="hover:text-purple-300 transition-colors">Innovation</Link></li>
               </ul>
             </div>
 
