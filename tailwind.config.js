@@ -3,7 +3,8 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./home.jsx"
+    "./home.jsx",
+    "./innovation.jsx"
   ],
   theme: {
     extend: {
