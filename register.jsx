@@ -57,7 +57,7 @@ export default function Register() {
       <header className="relative z-20 flex justify-between items-center w-full px-6 md:px-14 py-6 border-b border-white/5 bg-[#03060d]/80 backdrop-blur-md">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-8 md:h-10 w-auto object-contain" />
+          <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-7 sm:h-10 md:h-14 w-auto object-contain" />
         </Link>
 
         {/* Center Nav — desktop only */}
@@ -102,43 +102,43 @@ export default function Register() {
       )}
 
       {/* MAIN CONTENT */}
-      <main className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-14 py-16 md:py-24">
+      <main className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-14 py-12 md:py-24">
         {/* Title Container */}
-        <div className="flex flex-col items-center text-center mb-16 md:mb-24">
+        <div className="flex flex-col items-center text-center mb-12 md:mb-24">
           <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-4">Secure Your Slot</p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-white max-w-2xl mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-white max-w-2xl mb-4 md:mb-6">
             Execution &<br />Handbooks.
           </h1>
-          <p className="text-gray-400 font-light text-sm md:text-base max-w-2xl leading-relaxed">
+          <p className="text-gray-400 font-light text-sm md:text-base max-w-2xl leading-relaxed px-2">
             Review the tactical documentation for your discipline, then proceed to interface with the registration terminal. Only the highest caliber operators will survive.
           </p>
         </div>
 
         {/* 4 Tracks Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
           {tracks.map((track) => (
-            <div key={track.id} className="group relative bg-[#08080a] border border-white/5 hover:border-white/15 p-8 md:p-10 rounded-sm transition-all duration-500 overflow-hidden flex flex-col h-full bg-gradient-to-b from-white/[0.02] to-transparent">
+            <div key={track.id} className="group relative bg-[#08080a] border border-white/5 hover:border-white/15 p-6 md:p-10 rounded-sm transition-all duration-500 overflow-hidden flex flex-col h-full bg-gradient-to-b from-white/[0.02] to-transparent">
               {/* Backglow Color matches hover */}
               <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-[80px] opacity-40 group-hover:opacity-80 transition-all duration-700 ${track.glow}`}></div>
               
               <div className="relative z-10 flex-1">
-                <div className="flex justify-between items-start mb-8">
-                  <img src={track.logo} alt={track.title} className="w-12 h-12 md:w-14 md:h-14 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="flex justify-between items-start mb-4">
+                  <img src={track.logo} alt={track.title} className="w-16 sm:w-20 md:w-28 h-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
                   <span className="text-[10px] font-['Space_Grotesk'] text-white/20 uppercase tracking-widest">{track.id}</span>
                 </div>
                 
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">{track.title}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed mb-10">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight mb-2 text-white">{track.title}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed mb-8 md:mb-10">
                   {track.desc}
                 </p>
               </div>
 
               {/* Action Buttons */}
-              <div className="relative z-10 flex flex-col sm:flex-row gap-4 mt-auto border-t border-white/5 pt-8">
-                <button className="flex-1 flex items-center justify-center gap-2 bg-white text-[#03060d] px-6 py-4 rounded-sm text-[11px] font-['Space_Grotesk'] uppercase tracking-widest font-bold hover:bg-gray-200 transition-colors">
+              <div className="relative z-10 flex flex-col sm:flex-row gap-3 md:gap-4 mt-auto border-t border-white/5 pt-6 md:pt-8">
+                <button className="flex-1 flex items-center justify-center gap-2 bg-white text-[#03060d] px-6 py-4 rounded-sm text-[10px] md:text-[11px] font-['Space_Grotesk'] uppercase tracking-widest font-bold hover:bg-gray-200 transition-colors">
                   Register <ExternalLink className="w-3.5 h-3.5" />
                 </button>
-                <button className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-transparent text-white px-6 py-4 rounded-sm text-[11px] font-['Space_Grotesk'] uppercase tracking-widest hover:bg-white/5 hover:border-white/40 transition-all">
+                <button className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-transparent text-white px-6 py-4 rounded-sm text-[10px] md:text-[11px] font-['Space_Grotesk'] uppercase tracking-widest hover:bg-white/5 hover:border-white/40 transition-all">
                   Handbook <Download className="w-3.5 h-3.5" />
                 </button>
               </div>

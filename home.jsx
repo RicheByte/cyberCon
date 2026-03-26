@@ -169,24 +169,81 @@ export default function App() {
         }}
       />
 
+      {/* --- HEADER --- */}
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-14 py-6 border-b border-white/10 bg-black/60 backdrop-blur-md shadow-2xl shadow-black/50">
+        {/* Logo */}
+        <div className="flex items-center">
+          <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-7 sm:h-10 md:h-14 w-auto object-contain" />
+        </div>
+
+        {/* Center Nav — desktop only */}
+        <nav className="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.15em] font-['Space_Grotesk',sans-serif] font-medium text-gray-300 pt-1">
+          <a href="#about" className="hover:text-white transition-colors duration-300 drop-shadow-md">Event</a>
+          <a href="#tracks" className="hover:text-white transition-colors duration-300 drop-shadow-md">Tracks</a>
+          <a href="#timeline" className="hover:text-white transition-colors duration-300 drop-shadow-md">Timeline</a>
+          <a href="#contact" className="hover:text-white transition-colors duration-300 drop-shadow-md">Contact</a>
+        </nav>
+
+        {/* Right Nav */}
+        <div className="flex items-center gap-6">
+          <Link to="/register" className="hidden md:flex items-center gap-2 border border-white/30 bg-white/5 rounded-sm px-6 py-2 text-[10px] font-['Space_Grotesk',sans-serif] uppercase tracking-widest hover:bg-white hover:text-black active:bg-white active:text-black active:shadow-[0_0_30px_rgba(255,255,255,0.9)] active:scale-95 active:duration-75 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group text-gray-300">
+            <span className="relative flex h-2 w-2 mr-1">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white group-hover:bg-black group-active:bg-black"></span>
+            </span>
+            Register Now
+          </Link>
+          {/* Hamburger — mobile only */}
+          <button
+            className="md:hidden flex flex-col gap-[5px] p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-6 h-[1.5px] bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-[6.5px]' : ''}`} />
+            <span className={`block w-6 h-[1.5px] bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-6 h-[1.5px] bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''}`} />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Dropdown Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed top-[80px] left-0 right-0 z-40 bg-[#03060d]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-6 shadow-2xl">
+          <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Event</a>
+          <a href="#tracks" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Tracks</a>
+          <a href="#timeline" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Timeline</a>
+          <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Contact</a>
+          <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="mt-2 flex items-center justify-center gap-2 border border-white/30 bg-white/5 rounded-sm px-6 py-3 text-[10px] font-['Space_Grotesk'] uppercase tracking-widest hover:bg-white hover:text-black active:bg-white active:text-black active:shadow-[0_0_30px_rgba(255,255,255,0.9)] active:scale-[0.98] active:duration-75 transition-all duration-300 w-full shadow-[0_0_15px_rgba(255,255,255,0.1)] group text-gray-300">
+            <span className="relative flex h-2 w-2 mr-1">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white group-hover:bg-black group-active:bg-black"></span>
+            </span>
+            Register Now
+          </Link>
+        </div>
+      )}
+
       {/* --- HERO SCROLL CONTAINER --- */}
       {/* Set height to allow scrolling while the content remains sticky. 
           250vh means 1 viewport height for display, and 1.5 viewport heights for scrubbing distance */}
       <div ref={heroContainerRef} className="relative z-10 w-full h-[250vh]">
         {/* --- HERO STICKY CONTENT --- */}
-        <div className="sticky top-0 left-0 w-full h-screen flex flex-col p-6 md:p-10 lg:p-14 overflow-hidden bg-[#03060d]">
+        <div className="sticky top-0 left-0 w-full h-screen flex flex-col pt-32 p-6 md:px-10 lg:px-14 overflow-hidden bg-[#03060d]">
         
         {/* Central Custom Image & Lighting (Hero Only) */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {/* Smooth gradient transition to hide any sharp edges at the top */}
+          <div className="absolute top-0 left-0 right-0 h-[25vh] bg-gradient-to-b from-[#03060d] via-[#03060d]/90 to-transparent z-10" />
+
           {/* Glow behind character */}
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center translate-y-[8vh]">
             <div className="absolute w-[80vw] h-[80vw] max-w-[900px] max-h-[900px] bg-[#608bce] rounded-full blur-[140px] opacity-20 mix-blend-screen" />
           </div>
           
           <video 
             ref={videoRef}
             src={bgVid} 
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-top translate-y-[10vh] md:translate-y-[12vh] scale-[1.02]"
             muted
             playsInline
             preload="auto"
@@ -197,71 +254,34 @@ export default function App() {
               }
             }}
           />
+          
+          {/* Mobile dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/50 md:hidden z-20 pointer-events-none" />
         </div>
 
-        {/* Navbar */}
-        <header className="relative z-20 flex justify-between items-center w-full">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-10 md:h-14 w-auto object-contain" />
-          </div>
-
-          {/* Center Nav — desktop only */}
-          <nav className="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.15em] font-['Space_Grotesk',sans-serif] font-medium text-gray-300 pt-2">
-            <a href="#about" className="hover:text-white transition-colors">Event</a>
-            <a href="#tracks" className="hover:text-white transition-colors">Tracks</a>
-            <a href="#timeline" className="hover:text-white transition-colors">Timeline</a>
-            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-          </nav>
-
-          {/* Right: desktop button + mobile hamburger */}
-          <div className="flex items-center gap-4">
-            <Link to="/register" className="hidden md:block border border-white/30 rounded-full px-6 py-2 text-[10px] font-['Space_Grotesk',sans-serif] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
-              Secure Access
-            </Link>
-            {/* Hamburger — mobile only */}
-            <button
-              className="md:hidden flex flex-col gap-[5px] p-2"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <span className={`block w-6 h-[1.5px] bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-[6.5px]' : ''}`} />
-              <span className={`block w-6 h-[1.5px] bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`block w-6 h-[1.5px] bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''}`} />
-            </button>
-          </div>
-        </header>
-
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-[72px] left-0 right-0 z-30 bg-[#03060d]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-6">
-            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Event</a>
-            <a href="#tracks" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Tracks</a>
-            <a href="#timeline" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Timeline</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Contact</a>
-            <Link to="/register" className="mt-2 text-center border border-white/30 rounded-full px-6 py-3 text-[10px] font-['Space_Grotesk'] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 w-full">
-              Secure Access
-            </Link>
-          </div>
-        )}
-
         {/* Main Hero Content Layout */}
-        <main className="flex-1 relative w-full mt-8 md:mt-0 z-20">
+        <main className="flex-1 relative w-full mt-10 md:mt-0 z-30">
           
           {/* Mobile layout: stacked headline + date + button */}
-          <div className="md:hidden flex flex-col h-full">
-            <h1 className="text-[2.8rem] font-bold tracking-[-0.04em] leading-[0.88] mb-4 drop-shadow-2xl">
+          <div className="md:hidden flex flex-col h-full items-center text-center px-4 relative">
+            <div className="absolute inset-0 bg-black/30 blur-[40px] -z-10 rounded-full" />
+            <h1 className="text-5xl font-bold tracking-[-0.04em] leading-[0.95] mb-6 drop-shadow-2xl">
               Built by<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white font-medium">many. Won</span><br />
               by few.
             </h1>
-            <p className="text-gray-400 text-xs font-light leading-relaxed max-w-[2.00px] mb-6">
+            <p className="text-gray-400 text-sm font-light leading-relaxed max-w-[300px] mb-8">
               An elite arena combining a Hackathon, Designathon, and Capture The Flag.
             </p>
-            <div className="text-2xl font-medium tracking-[-0.04em] leading-none text-white/80 mb-1">
+            <div className="text-2xl font-medium tracking-[-0.04em] leading-none text-white/80 mb-2">
               April 04<sup className="text-sm -top-2">th</sup>, 202.0
             </div>
-            <div className="text-gray-500 text-xs font-light tracking-wide">Faculty of Technology, USJ</div>
+            <div className="text-gray-500 text-sm font-light tracking-wide mb-10">Faculty of Technology, USJ</div>
+            
+            <a href="#tracks" className="w-16 h-16 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex flex-col items-center justify-center gap-1 hover:bg-white/10 hover:scale-105 transition-all duration-500 cursor-pointer group">
+              <span className="text-[8px] font-['Space_Grotesk',sans-serif] uppercase tracking-widest text-white/90">Enter</span>
+              <ArrowDown size={10} className="text-white/60 group-hover:text-white transition-colors group-hover:translate-y-1 duration-300" strokeWidth={1.5} />
+            </a>
           </div>
 
           {/* Desktop layout: absolute positioned corners */}
@@ -309,10 +329,10 @@ export default function App() {
             </div>
           </div>
 
-          {/* Center Bottom: Enter Button — both mobile & desktop */}
-          <div className="absolute bottom-4 md:bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <a href="#tracks" className="w-20 h-20 md:w-32 md:h-32 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex flex-col items-center justify-center gap-1 md:gap-2 hover:bg-white/10 hover:scale-105 transition-all duration-500 cursor-pointer group">
-              <span className="text-[9px] md:text-[10px] font-['Space_Grotesk',sans-serif] uppercase tracking-widest text-white/90">Enter</span>
+          {/* Center Bottom: Enter Button — desktop only */}
+          <div className="hidden md:flex absolute bottom-[10%] left-1/2 -translate-x-1/2 flex-col items-center">
+            <a href="#tracks" className="w-32 h-32 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex flex-col items-center justify-center gap-2 hover:bg-white/10 hover:scale-105 transition-all duration-500 cursor-pointer group">
+              <span className="text-[10px] font-['Space_Grotesk',sans-serif] uppercase tracking-widest text-white/90">Enter</span>
               <ArrowDown size={12} className="text-white/60 group-hover:text-white transition-colors group-hover:translate-y-1 duration-300" strokeWidth={1.5} />
             </a>
           </div>
@@ -425,14 +445,14 @@ export default function App() {
       {/* =========================================
           LOGOS MARQUEE STRIP
           ========================================= */}
-      <div className="relative w-full bg-[#02040a] border-t border-white/[0.04] py-14 overflow-hidden">
+      <div className="relative w-full bg-[#02040a] border-t border-white/[0.04] py-8 md:py-14 overflow-hidden">
         {/* Fade edges */}
         <div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-[#02040a] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 h-full w-28 bg-gradient-to-l from-[#02040a] to-transparent z-10 pointer-events-none" />
 
         <div className="animate-marquee">
           {[...Array(2)].map((_, setIdx) => (
-            <div key={setIdx} className="flex items-center gap-24 px-12">
+            <div key={setIdx} className="flex items-center gap-16 md:gap-32 px-8 md:px-16">
               {[
                 { src: "/logos/Cybercon'26 Logo.png",      label: "CYBERCON'26" },
                 { src: '/logos/Hackathon Logo.png',        label: 'Hackathon' },
@@ -440,10 +460,8 @@ export default function App() {
                 { src: '/logos/Ideathon Logo.png',         label: 'Ideathon' },
                 { src: '/logos/Capture The Flag Logo.png', label: 'Capture The Flag' },
               ].map((logo, i) => (
-                <div key={i} className="flex items-center gap-5 shrink-0 opacity-50 hover:opacity-90 transition-opacity duration-300 cursor-default select-none">
-                  <img src={logo.src} alt={logo.label} className="h-16 w-auto object-contain" />
-                  <span className="text-xs font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-300 whitespace-nowrap">{logo.label}</span>
-                  <span className="text-white/10 text-2xl ml-10">·</span>
+                <div key={i} className="flex items-center shrink-0 opacity-50 hover:opacity-90 transition-opacity duration-300 cursor-default select-none">
+                  <img src={logo.src} alt={logo.label} className="h-12 md:h-16 w-auto object-contain" />
                 </div>
               ))}
             </div>
@@ -465,24 +483,24 @@ export default function App() {
             </p>
           </div>
 
-          <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 w-full">
-            <div className="flex flex-col border-l border-white/10 pl-6 group">
-               <div className="text-5xl md:text-6xl font-medium tracking-tight text-white mb-2 group-hover:text-blue-200 transition-colors">1000<span className="text-white/30 text-4xl">+</span></div>
+          <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-x-8 md:gap-y-16 w-full mt-10 lg:mt-0">
+            <div className="flex flex-col border-l border-white/10 pl-5 md:pl-6 group">
+               <div className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-2 group-hover:text-blue-200 transition-colors">1000<span className="text-white/30 text-2xl md:text-4xl">+</span></div>
                <div className="text-[9px] uppercase tracking-[0.2em] font-['Space_Grotesk'] text-gray-500 mt-2">Total<br/>Registrations</div>
             </div>
-            <div className="flex flex-col border-l border-white/10 pl-6 group">
-               <div className="text-5xl md:text-6xl font-medium tracking-tight text-white mb-2 group-hover:text-blue-200 transition-colors">03</div>
+            <div className="flex flex-col border-l border-white/10 pl-5 md:pl-6 group">
+               <div className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-2 group-hover:text-blue-200 transition-colors">03</div>
                <div className="text-[9px] uppercase tracking-[0.2em] font-['Space_Grotesk'] text-gray-500 mt-2">Challenge<br/>Tiers</div>
-               <div className="mt-4 text-[8px] uppercase tracking-[0.1em] text-white/30 font-['Outfit'] border border-white/10 rounded-full px-3 py-1 inline-block w-max">
+               <div className="mt-3 md:mt-4 text-[8px] uppercase tracking-[0.1em] text-white/30 font-['Outfit'] border border-white/10 rounded-full px-2 py-1 md:px-3 inline-block w-max">
                  Entry / Int. / Root
                </div>
             </div>
-            <div className="flex flex-col border-l border-white/10 pl-6 group">
-               <div className="text-5xl md:text-6xl font-medium tracking-tight text-white mb-2 group-hover:text-blue-200 transition-colors">25<span className="text-white/30 text-4xl">+</span></div>
+            <div className="flex flex-col border-l border-white/10 pl-5 md:pl-6 group">
+               <div className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-2 group-hover:text-blue-200 transition-colors">25<span className="text-white/30 text-2xl md:text-4xl">+</span></div>
                <div className="text-[9px] uppercase tracking-[0.2em] font-['Space_Grotesk'] text-gray-500 mt-2">Universities<br/>Linked</div>
             </div>
-            <div className="flex flex-col border-l border-white/10 pl-6 group">
-               <div className="text-5xl md:text-6xl font-medium tracking-tight text-white mb-2 group-hover:text-blue-200 transition-colors">09</div>
+            <div className="flex flex-col border-l border-white/10 pl-5 md:pl-6 group">
+               <div className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-2 group-hover:text-blue-200 transition-colors">09</div>
                <div className="text-[9px] uppercase tracking-[0.2em] font-['Space_Grotesk'] text-gray-500 mt-2">Track<br/>Winners</div>
             </div>
           </div>
@@ -519,22 +537,22 @@ export default function App() {
             ))}
           </div>
 
-          <div className="relative border-l border-white/10 ml-[2px] space-y-10 md:space-y-16 py-4">
+          <div className="relative border-l border-white/10 ml-[2px] space-y-8 md:space-y-16 py-4">
             <div className="absolute top-0 left-[-1px] w-[2px] h-[30%] bg-gradient-to-b from-white/30 to-transparent transition-all duration-500"></div>
             
             {timelines[activeTimeline].map((item, idx) => (
-              <div key={idx} className="relative pl-6 md:pl-16 group">
+              <div key={idx} className="relative pl-5 md:pl-16 group">
                 <div className={`absolute -left-[4px] w-2 h-2 rounded-full transition-all duration-300 ${item.baseDot} ${item.hoverDot} ${item.highlight ? 'top-[22px] md:top-[28px] -left-[5px] w-3 h-3' : 'top-[7px]'}`} />
                 
                 {item.highlight ? (
                   <>
                     <div className="inline-block border border-white/20 rounded-full px-3 py-1 text-[10px] font-['Space_Grotesk'] tracking-[0.15em] text-white/70 mb-2">{item.date}</div>
-                    <h4 className="text-3xl md:text-5xl font-bold tracking-tight mb-2 text-white">{item.title}</h4>
+                    <h4 className="text-2xl md:text-5xl font-bold tracking-tight mb-2 text-white">{item.title}</h4>
                   </>
                 ) : (
                   <>
                     <div className="text-[10px] font-['Space_Grotesk'] tracking-[0.2em] text-gray-400 mb-1">{item.date}</div>
-                    <h4 className="text-xl md:text-3xl font-bold tracking-tight mb-1 text-white/90">{item.title}</h4>
+                    <h4 className="text-lg md:text-3xl font-bold tracking-tight mb-1 text-white/90">{item.title}</h4>
                   </>
                 )}
                 <p className="text-gray-500 text-xs md:text-sm font-light leading-relaxed">{item.desc}</p>
