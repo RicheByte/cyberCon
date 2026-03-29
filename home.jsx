@@ -6,41 +6,46 @@ import bgVid from './vid.mp4';
 export default function App() {
   const [openFaq, setOpenFaq] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeTimeline, setActiveTimeline] = useState('Overall');
+  const [activeTimeline, setActiveTimeline] = useState('Innovation Ceremony');
   const videoRef = useRef(null);
   const heroContainerRef = useRef(null);
 
   const timelines = {
-    "Overall": [
-      { date: "22 Feb 2026", title: "Registration Opens", desc: "The portal goes live. Secure your slot early before it fills up.", baseDot: "bg-white", hoverDot: "group-hover:scale-150" },
-      { date: "07 Mar 2026", title: "Designathon Workshop", desc: "Introductory session on UI/UX principles. Gain intel prior to execution.", baseDot: "bg-white/30", hoverDot: "group-hover:bg-white/60 group-hover:scale-150" },
-      { date: "14 Mar 2026", title: "Registration Closes", desc: "Final deadline. All pending slots will be permanently closed.", baseDot: "bg-white/30", hoverDot: "group-hover:bg-white/60 group-hover:scale-150" },
-      { date: "21 Mar 2026", title: "Preliminary Rounds", desc: "Qualifiers begin. CTF officially starts on the 28th.", baseDot: "bg-white/30", hoverDot: "group-hover:bg-white/60 group-hover:scale-150" },
-      { date: "04 Apr 2026", title: "Grand Finale", desc: "Finalists converge on-site at the Faculty of Technology, USJ.", baseDot: "bg-white shadow-[0_0_20px_rgba(255,255,255,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
-    ],
-    "Hackathon": [
-      { date: "22 Feb 2026", title: "Hackathon Registration", desc: "Form your team of 2-4 members.", baseDot: "bg-blue-500", hoverDot: "group-hover:bg-blue-400 group-hover:scale-150" },
-      { date: "14 Mar 2026", title: "Registration Closes", desc: "Final call for all Hackathon participants.", baseDot: "bg-blue-500/50", hoverDot: "group-hover:bg-blue-400/80 group-hover:scale-150" },
-      { date: "21 Mar 2026", title: "Initial Submissions", desc: "First round of prototype reviews.", baseDot: "bg-blue-500/50", hoverDot: "group-hover:bg-blue-400/80 group-hover:scale-150" },
-      { date: "04 Apr 2026", title: "Live Coding & Demo", desc: "24-hour sprint and final presentations.", baseDot: "bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
+    "Innovation Ceremony": [
+      { date: "Mar 27", title: "Registration Opens", desc: "Portal goes live for Innovation Ceremony registration.", baseDot: "bg-amber-500", hoverDot: "group-hover:bg-amber-400 group-hover:scale-150" },
+      { date: "Apr 4", title: "Awareness Sessions", desc: "Learn about the event and expectations.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "Apr 12", title: "Registration Closes", desc: "Final deadline for all registrations.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "Apr 13", title: "Proposal Template Sent", desc: "Template and guidelines distributed to participants.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "Apr 19", title: "Proposal Deadline Reminder", desc: "Final reminder for proposal submissions.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "Apr 20", title: "Final Proposal Deadline", desc: "Last submission window closes.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "May 22", title: "Event Day", desc: "Innovation Ceremony takes place.", baseDot: "bg-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.5)]", hoverDot: "group-hover:scale-125", highlight: true },
+      { date: "May 25", title: "Winners Announced", desc: "Results and winners celebration.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" }
     ],
     "Designathon": [
-      { date: "22 Feb 2026", title: "Designathon Registration", desc: "Individual or up to 3 members.", baseDot: "bg-purple-500", hoverDot: "group-hover:bg-purple-400 group-hover:scale-150" },
-      { date: "07 Mar 2026", title: "UI/UX Workshop", desc: "Learn the latest trends and toolkits.", baseDot: "bg-purple-500/50", hoverDot: "group-hover:bg-purple-400/80 group-hover:scale-150" },
-      { date: "14 Mar 2026", title: "Case Study Release", desc: "Problem statements provided to participants.", baseDot: "bg-purple-500/50", hoverDot: "group-hover:bg-purple-400/80 group-hover:scale-150" },
-      { date: "04 Apr 2026", title: "Final Pitch", desc: "Present interactive prototypes.", baseDot: "bg-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
+      { date: "Apr 27", title: "Registration Opens", desc: "Designathon registration portal is live.", baseDot: "bg-purple-500", hoverDot: "group-hover:bg-purple-400 group-hover:scale-150" },
+      { date: "May 10-11", title: "Awareness Sessions", desc: "Introductory sessions on design principles and tools.", baseDot: "bg-purple-500/50", hoverDot: "group-hover:bg-purple-400/80 group-hover:scale-150" },
+      { date: "May 15", title: "Registration Closes", desc: "Final deadline for Designathon registration.", baseDot: "bg-purple-500/50", hoverDot: "group-hover:bg-purple-400/80 group-hover:scale-150" },
+      { date: "May 18", title: "Workshop", desc: "Design workshop and final preparations.", baseDot: "bg-purple-500/50", hoverDot: "group-hover:bg-purple-400/80 group-hover:scale-150" },
+      { date: "May 22", title: "Event Day", desc: "Designathon competition takes place.", baseDot: "bg-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.5)]", hoverDot: "group-hover:scale-125", highlight: true },
+      { date: "May 25", title: "Winners Announced", desc: "Results and winners celebration.", baseDot: "bg-purple-500/50", hoverDot: "group-hover:bg-purple-400/80 group-hover:scale-150" }
     ],
-    "Ideathon": [
-      { date: "22 Feb 2026", title: "Ideathon Registration", desc: "Register your visionary ideas. Teams of 2-4.", baseDot: "bg-amber-500", hoverDot: "group-hover:bg-amber-400 group-hover:scale-150" },
-      { date: "15 Mar 2026", title: "Proposal Submission", desc: "Submit your comprehensive business plan.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
-      { date: "25 Mar 2026", title: "Shortlist Announcement", desc: "Top teams selected for the finale.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
-      { date: "04 Apr 2026", title: "Investor Pitch", desc: "Pitch your ideas to industry experts.", baseDot: "bg-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
+    "Hackathon": [
+      { date: "Apr 27", title: "Registration Opens", desc: "Form your team of 2-4 members.", baseDot: "bg-blue-500", hoverDot: "group-hover:bg-blue-400 group-hover:scale-150" },
+      { date: "May 10-11", title: "Awareness Sessions", desc: "Introductory sessions on development practices.", baseDot: "bg-blue-500/50", hoverDot: "group-hover:bg-blue-400/80 group-hover:scale-150" },
+      { date: "May 16", title: "Registration Closes", desc: "Final deadline for Hackathon registration.", baseDot: "bg-blue-500/50", hoverDot: "group-hover:bg-blue-400/80 group-hover:scale-150" },
+      { date: "May 19", title: "Workshop", desc: "Development workshop and final preparations.", baseDot: "bg-blue-500/50", hoverDot: "group-hover:bg-blue-400/80 group-hover:scale-150" },
+      { date: "May 23", title: "Event Day", desc: "24-hour sprint and final presentations.", baseDot: "bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.5)]", hoverDot: "group-hover:scale-125", highlight: true },
+      { date: "May 25", title: "Winners Announced", desc: "Results and winners celebration.", baseDot: "bg-blue-500/50", hoverDot: "group-hover:bg-blue-400/80 group-hover:scale-150" }
     ],
     "CTF": [
-      { date: "22 Feb 2026", title: "CTF Registration", desc: "Open to all operators.", baseDot: "bg-red-500", hoverDot: "group-hover:bg-red-400 group-hover:scale-150" },
-      { date: "14 Mar 2026", title: "Registration Closes", desc: "Finalise teams and credentials.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
-      { date: "28 Mar 2026", title: "Qualifying Flags", desc: "Initial stage of exploitation begins.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
-      { date: "04 Apr 2026", title: "Final Assault", desc: "Intense on-site cyber warfare.", baseDot: "bg-red-500 shadow-[0_0_20px_rgba(239,68,68,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
+      { date: "Apr 25-26", title: "Awareness Sessions", desc: "Learn about CTF challenges and strategies.", baseDot: "bg-red-500", hoverDot: "group-hover:bg-red-400 group-hover:scale-150" },
+      { date: "Apr 27", title: "Registration Opens", desc: "CTF registration portal is live.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
+      { date: "May 4", title: "Registration Closes", desc: "Final deadline for CTF registration.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
+      { date: "May 7", title: "Workshop", desc: "CTF workshop and preparation session.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
+      { date: "May 11", title: "Qualifier Day", desc: "CTF qualification round begins.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
+      { date: "May 11", title: "Top 10 Finalists Announced", desc: "Top 10 teams advance to finals.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
+      { date: "May 24", title: "War Room Setup", desc: "Final preparations and war room setup.", baseDot: "bg-red-500/50", hoverDot: "group-hover:bg-red-400/80 group-hover:scale-150" },
+      { date: "May 25", title: "CTF Finals Day", desc: "Intense on-site cyber warfare.", baseDot: "bg-red-500 shadow-[0_0_20px_rgba(239,68,68,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
     ]
   };
 
@@ -598,12 +603,13 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
             {[
               { name: "Raviru Rathnaweera", role: "President — ICTS" },
               { name: "Nuwan Konara", role: "CTF Coordinator" },
               { name: "Dulanga Perera", role: "Designathon Coord" },
-              { name: "Yesith Hansana", role: "Hackathon Coord" }
+              { name: "Yesith Hansana", role: "Hackathon Coord" },
+              { name: "Ideathon Coordinator", role: "Ideathon Coord" }
             ].map((person, idx) => (
               <div key={idx} className="bg-[#08080a] border border-white/5 hover:border-white/15 p-6 md:p-8 flex flex-col justify-between min-h-[140px] md:aspect-square group transition-all duration-500 rounded-sm overflow-hidden">
                 <div className="text-[9px] md:text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 group-hover:text-gray-300 transition-colors">
