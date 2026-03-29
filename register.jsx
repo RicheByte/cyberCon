@@ -8,24 +8,24 @@ export default function Register() {
   const tracks = [
     {
       id: '01',
+      title: 'Ideathon',
+      desc: 'Pitch your vision. Generate bold, innovative ideas that tackle real-world challenges and present them to a panel of industry experts.',
+      logo: '/logos/Ideathon Logo.png',
+      glow: 'bg-amber-500/5 group-hover:bg-amber-500/10'
+    },
+    {
+      id: '02',
       title: 'Hackathon',
       desc: 'Build solutions that matter. Tackle real-world problem statements and ship functional software under extreme pressure.',
       logo: '/logos/Hackathon Logo.png',
       glow: 'bg-blue-500/5 group-hover:bg-blue-500/10'
     },
     {
-      id: '02',
+      id: '03',
       title: 'Designathon',
       desc: 'Design with intent. Solve visual communication and UX challenges, delivering polished interfaces in a strict time window.',
       logo: '/logos/Designathon Logo.png',
       glow: 'bg-purple-500/5 group-hover:bg-purple-500/10'
-    },
-    {
-      id: '03',
-      title: 'Ideathon',
-      desc: 'Pitch your vision. Generate bold, innovative ideas that tackle real-world challenges and present them to a panel of industry experts.',
-      logo: '/logos/Ideathon Logo.png',
-      glow: 'bg-amber-500/5 group-hover:bg-amber-500/10'
     },
     {
       id: '04',
@@ -135,9 +135,15 @@ export default function Register() {
 
               {/* Action Buttons */}
               <div className="relative z-10 flex flex-col sm:flex-row gap-3 md:gap-4 mt-auto border-t border-white/5 pt-6 md:pt-8">
-                <button className="flex-1 flex items-center justify-center gap-2 bg-white text-[#03060d] px-6 py-4 rounded-sm text-[10px] md:text-[11px] font-['Space_Grotesk'] uppercase tracking-widest font-bold hover:bg-gray-200 transition-colors">
-                  Register <ExternalLink className="w-3.5 h-3.5" />
-                </button>
+                {track.id === '01' ? (
+                  <a href="https://forms.gle/W72ND3rsFgEok6cR8" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 bg-white text-[#03060d] px-6 py-4 rounded-sm text-[10px] md:text-[11px] font-['Space_Grotesk'] uppercase tracking-widest font-bold hover:bg-gray-200 transition-colors">
+                    Register <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                ) : (
+                  <button disabled className="flex-1 flex items-center justify-center gap-2 bg-gray-600 text-gray-300 px-6 py-4 rounded-sm text-[10px] md:text-[11px] font-['Space_Grotesk'] uppercase tracking-widest cursor-not-allowed opacity-60">
+                    Coming Soon
+                  </button>
+                )}
                 <button className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-transparent text-white px-6 py-4 rounded-sm text-[10px] md:text-[11px] font-['Space_Grotesk'] uppercase tracking-widest hover:bg-white/5 hover:border-white/40 transition-all">
                   Handbook <Download className="w-3.5 h-3.5" />
                 </button>
