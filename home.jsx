@@ -12,14 +12,14 @@ export default function App() {
 
   const timelines = {
     "Innovation Ceremony": [
-      { date: "Mar 27", title: "Registration Opens", desc: "Portal goes live for Innovation Ceremony registration.", baseDot: "bg-amber-500", hoverDot: "group-hover:bg-amber-400 group-hover:scale-150" },
-      { date: "Apr 4", title: "Awareness Sessions", desc: "Learn about the event and expectations.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
-      { date: "Apr 12", title: "Registration Closes", desc: "Final deadline for all registrations.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
-      { date: "Apr 13", title: "Proposal Template Sent", desc: "Template and guidelines distributed to participants.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
-      { date: "Apr 19", title: "Proposal Deadline Reminder", desc: "Final reminder for proposal submissions.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
-      { date: "Apr 20", title: "Final Proposal Deadline", desc: "Last submission window closes.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
-      { date: "May 22", title: "Event Day", desc: "Innovation Ceremony takes place.", baseDot: "bg-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.5)]", hoverDot: "group-hover:scale-125", highlight: true },
-      { date: "May 25", title: "Winners Announced", desc: "Results and winners celebration.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" }
+      { date: "Mar 27", title: "Registration Opens", desc: "Your shot begins now. Spots are limited, competition is fierce.", baseDot: "bg-amber-500", hoverDot: "group-hover:bg-amber-400 group-hover:scale-150" },
+      { date: "Apr 4", title: "Info Sessions", desc: "Learn what separates winners from everyone else.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "Apr 12", title: "Registration Closes", desc: "Last chance to lock in your spot. Move fast.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "Apr 13", title: "Proposal Kit Released", desc: "Everything you need to craft a killer pitch is here.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "Apr 19", title: "Final Push", desc: "Last reminder before the deadline. Make your idea shine.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "Apr 20", title: "Proposals Due", desc: "Time's up. Your vision is now in their hands.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" },
+      { date: "May 22", title: "Innovation Ceremony", desc: "Present to industry titans. This is your moment.", baseDot: "bg-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.5)]", hoverDot: "group-hover:scale-125", highlight: true },
+      { date: "May 25", title: "Champions Crowned", desc: "The best ideas rise. Celebrate the victory.", baseDot: "bg-amber-500/50", hoverDot: "group-hover:bg-amber-400/80 group-hover:scale-150" }
     ],
     "Designathon": [
       { date: "Apr 27", title: "Registration Opens", desc: "Designathon registration portal is live.", baseDot: "bg-purple-500", hoverDot: "group-hover:bg-purple-400 group-hover:scale-150" },
@@ -108,10 +108,10 @@ export default function App() {
   };
 
   const faqs = [
-    { q: "Who is eligible to compete?", a: "Undergraduates and tech enthusiasts from registered institutions island-wide." },
-    { q: "Can I register for multiple tracks?", a: "No. Choose your specialization carefully to ensure maximum performance. Overlapping schedules will prevent execution across multiple domains." },
-    { q: "What is the registration fee?", a: "Registration is strictly zero-cost, but access tokens (slots) are highly competitive and limited." },
-    { q: "Where is the final round?", a: "The Grand Finale will be held on-site at the Faculty of Technology, University of Sri Jayewardenepura, on 04 April 202.0." }
+    { q: "What's the actual vibe here?", a: "This isn't your average hackathon. It's where the brightest tech minds collide, compete, and create. You'll be surrounded by builders, designers, and security experts pushing boundaries." },
+    { q: "Can I join multiple tracks?", a: "One track per person — go all-in on your specialty. We designed it this way so you can unleash your full potential without spreading yourself thin." },
+    { q: "How much does it cost?", a: "Ideathon is completely free — we're betting on innovation, not budgets. Hackathon, Designathon, and CTF have registration fees to cover costs. But spots are limited across all tracks, so move fast if you're serious." },
+    { q: "Where do we battle it out?", a: "Right here in the Saegis campus. This is where legends are made." }
   ];
 
   return (
@@ -271,17 +271,17 @@ export default function App() {
           <div className="md:hidden flex flex-col h-full items-center text-center px-4 relative">
             <div className="absolute inset-0 bg-black/30 blur-[40px] -z-10 rounded-full" />
             <h1 className="text-5xl font-bold tracking-[-0.04em] leading-[0.95] mb-6 drop-shadow-2xl">
-              Built by<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white font-medium">many. Won</span><br />
-              by few.
+              Think. Create.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white font-medium">Dominate.</span><br />
+              Win it all.
             </h1>
             <p className="text-gray-400 text-sm font-light leading-relaxed max-w-[300px] mb-8">
-              An elite arena combining a Hackathon, Designathon, and Capture The Flag.
+              Four tracks. One mission. Prove you're the best in the game.
             </p>
             <div className="text-2xl font-medium tracking-[-0.04em] leading-none text-white/80 mb-2">
               April 04<sup className="text-sm -top-2">th</sup>, 202.0
             </div>
-            <div className="text-gray-500 text-sm font-light tracking-wide mb-10">Faculty of Technology, USJ</div>
+            <div className="text-gray-500 text-sm font-light tracking-wide mb-10">ICT club of saegis campus</div>
             
             <a href="#tracks" className="w-16 h-16 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex flex-col items-center justify-center gap-1 hover:bg-white/10 hover:scale-105 transition-all duration-500 cursor-pointer group">
               <span className="text-[8px] font-['Space_Grotesk',sans-serif] uppercase tracking-widest text-white/90">Enter</span>
@@ -293,33 +293,32 @@ export default function App() {
           {/* Top Left: Main Headline */}
           <div className="hidden md:block md:absolute md:top-[15%] md:left-0 max-w-[450px]">
             <h1 className="text-7xl lg:text-[5.5rem] font-bold tracking-[-0.04em] leading-[0.9] mb-6 drop-shadow-2xl">
-              Built by<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white font-medium">many. Won</span><br />
-              by few.
+              Think. Create.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white font-medium">Dominate.</span><br />
+              Win it all.
             </h1>
             <p className="text-gray-400 text-sm font-light leading-relaxed max-w-[280px]">
-              An elite arena of cyberwarfare that combines the intensity of a Hackathon, Designathon, and Capture The Flag.
+              The ultimate playground where innovators battle, designers shine, coders sprint, and hackers hunt flags. Your moment is now.
             </p>
           </div>
 
           {/* Top Right: Secondary Headline */}
           <div className="hidden md:block md:absolute md:top-[15%] md:right-0 max-w-[320px]">
             <h2 className="text-5xl font-medium tracking-tight leading-[1.1] mb-6 drop-shadow-lg">
-              Pick Your<br />
-              Discipline.
+              Your Battleground<br />Awaits.
             </h2>
             <p className="text-[9px] font-['Space_Grotesk',sans-serif] text-gray-400 uppercase tracking-[0.2em] leading-[1.8] text-justify opacity-80">
-              SHOW UP TO THE ULTIMATE TECHNOLOGY CONVERGENCE IN SRI LANKA. PREPARE YOUR VECTORS AND DOMINATE THE ARENA.
+              Sri Lanka's most intense tech competition. Pick your weapon. Learn from the best. Compete like you mean it. Walk away as a legend.
             </p>
           </div>
 
           {/* Bottom Left: Detail Text */}
           <div className="hidden md:block md:absolute md:bottom-[5%] md:left-0 max-w-[280px]">
             <h3 className="text-xl font-medium tracking-tight mb-4">
-              Identify the Target
+              Ready to Challenge Yourself?
             </h3>
             <p className="text-[9px] font-['Space_Grotesk',sans-serif] text-gray-500 uppercase tracking-[0.15em] leading-[1.8] mb-6 text-justify">
-              <span className="text-gray-300">EXPLOIT</span> WEB VULNERABILITIES, BREAK CRYPTOGRAPHY, REVERSE ENGINEER BINARIES, DESIGN WITH INTENT, AND BUILD SOLUTIONS THAT MATTER.
+              <span className="text-gray-300">CODE</span> THE FUTURE, DESIGN BRILLIANCE, PITCH GAME-CHANGERS, AND HUNT DIGITAL FLAGS. THIS IS YOUR SHOT.
             </p>
           </div>
 
@@ -330,7 +329,7 @@ export default function App() {
               04<sup className="text-4xl -top-4">th</sup>, 202.0
             </div>
             <div className="text-gray-400 text-base font-light tracking-wide">
-              Faculty of Technology, USJ
+              ICT club of saegis campus
             </div>
           </div>
 
@@ -354,10 +353,10 @@ export default function App() {
       <section id="tracks" className="relative w-full bg-[#02040a] z-30 pt-16 pb-16 md:pt-32 md:pb-32 px-6 md:px-14 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col relative z-10">
           <div className="flex flex-col items-start gap-3 mb-12 md:mb-24">
-            <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500">01 — The Disciplines</p>
-            <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-white">The Disciplines.</h2>
+            <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-4">01 — Your Arsenal</p>
+            <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] text-white">Choose Your Weapon.</h2>
             <p className="text-gray-400 font-light max-w-xl text-sm leading-relaxed mt-1">
-              Four exclusive battlegrounds. Select your domain. Only the highest caliber operators will survive the preliminary protocols.
+              Four unique tracks. Four different ways to prove your excellence. Which legend will you become?
             </p>
           </div>
 
@@ -374,7 +373,7 @@ export default function App() {
               </div>
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Hackathon</h3>
               <p className="text-gray-400 text-sm font-light leading-relaxed mb-10">
-                Build solutions that matter. Tackle real-world problem statements and ship functional software under extreme pressure.
+                Code against the clock. 24 hours to turn your vision into reality. Build fast, ship harder, prove yourself against the best developers on the island.
               </p>
               
               <div className="w-full h-[1px] bg-white/5 mb-6"></div>
@@ -394,7 +393,7 @@ export default function App() {
               </div>
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Designathon</h3>
               <p className="text-gray-400 text-sm font-light leading-relaxed mb-10">
-                Design with intent. Solve visual communication and UX challenges, delivering polished interfaces in a strict time window.
+                Design under pressure. Create beautiful, functional interfaces that solve real problems. Your pixels will speak louder than words.
               </p>
               
               <div className="w-full h-[1px] bg-white/5 mb-6"></div>
@@ -414,7 +413,7 @@ export default function App() {
               </div>
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Ideathon</h3>
               <p className="text-gray-400 text-sm font-light leading-relaxed mb-10">
-                Pitch your vision. Generate bold, innovative ideas that tackle real-world challenges and present them to a panel of industry experts.
+                Innovate fearlessly. Pitch ideas that could change the world. Impress industry titans and propel your concept from napkin to reality.
               </p>
               
               <div className="w-full h-[1px] bg-white/5 mb-6"></div>
@@ -434,7 +433,7 @@ export default function App() {
               </div>
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-white">Capture The Flag</h3>
               <p className="text-gray-400 text-sm font-light leading-relaxed mb-10">
-                Hunt the flag. Exploit web vulnerabilities, break cryptography, reverse engineer binaries, and analyze memory dumps.
+                Hack with purpose. Exploit vulnerabilities, crack encryption, reverse engineer code. Become the ethical hacker everyone talks about.
               </p>
               
               <div className="w-full h-[1px] bg-white/5 mb-6"></div>
@@ -481,10 +480,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-14 justify-between items-start">
           
           <div className="lg:w-1/3 flex flex-col justify-center w-full">
-            <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-4">02 — Impact Metrics</p>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-[-0.04em] mb-4 leading-[0.9] text-white">Impact<br />Metrics.</h2>
+            <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-4">02 — The Numbers</p>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-[-0.04em] mb-4 leading-[0.9] text-white">By The Numbers.</h2>
             <p className="text-gray-400 font-light text-sm max-w-[280px] leading-relaxed">
-              Stats defining the CYBERCON'26 arena. The magnitude of the convergence is undeniable.
+              This isn't just talk. These numbers represent something real: the rise of Sri Lanka's tech renaissance.
             </p>
           </div>
 
@@ -521,9 +520,9 @@ export default function App() {
         <div className="w-full lg:w-1/2 py-12 md:py-32 px-6 md:px-14 lg:pl-52 lg:pr-10">
           
           <div className="mb-10 md:mb-16">
-            <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-3">03 — Schedule</p>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] mb-3 text-white">Timeline.</h2>
-            <p className="text-gray-400 font-light text-sm">Dates are locked. Prepare your vectors. Execution begins shortly.</p>
+            <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-3">03 — The Countdown</p>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.04em] mb-3 text-white">When It Happens.</h2>
+            <p className="text-gray-400 font-light text-sm">Everything's scheduled. Now it's on you. Don't miss your window of opportunity.</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-10 md:mb-16 overflow-x-auto no-scrollbar py-2">
@@ -599,7 +598,7 @@ export default function App() {
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-[-0.04em] text-white">Meet the<br/>Team.</h2>
             </div>
             <p className="text-gray-500 font-light text-sm max-w-[300px] leading-relaxed">
-              Key personnel and contacts. Reach out to the respective coordinators for queries.
+              The masterminds behind the madness. Your questions, answered. Your support, delivered.
             </p>
           </div>
 
@@ -630,8 +629,8 @@ export default function App() {
           ========================================= */}
       <section className="relative w-full bg-[#02040a] z-30 py-16 md:py-32 px-6 md:px-14 border-t border-white/[0.05]">
         <div className="max-w-4xl mx-auto">
-           <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-4">05 — FAQ</p>
-           <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.04em] mb-10 md:mb-16 text-white">Frequently Asked.</h2>
+           <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-4">05 — Questions?</p>
+           <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.04em] mb-10 md:mb-16 text-white">Got Questions? We've Got Answers.</h2>
            
            <div className="space-y-3">
              {faqs.map((faq, index) => (
@@ -676,7 +675,7 @@ export default function App() {
                 <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-12 md:h-16 w-auto object-contain" />
               </div>
               <p className="text-gray-300 text-sm max-w-sm leading-relaxed font-light">
-                Sri Lanka's only event where Builders, Designers, and Hackers compete on the same stage.
+                Where innovation collides with ambition. Where Sri Lanka's brightest minds come to compete, inspire, and create magic together.
               </p>
             </div>
 
@@ -701,7 +700,7 @@ export default function App() {
           </div>
 
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-400 font-['Space_Grotesk'] tracking-[0.15em] uppercase">
-            <div>© 202.0 ICTS, Faculty of Technology, USJ. All rights reserved.</div>
+            <div>© 202.0 ICTS, ICT club of saegis campus. All rights reserved.</div>
             <div className="flex gap-6">
               <a href="#" className="hover:text-white transition-colors">Privacy</a>
               <a href="#" className="hover:text-white transition-colors">Terms</a>
