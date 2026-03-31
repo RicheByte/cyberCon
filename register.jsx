@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Download, ExternalLink, Linkedin, Instagram, Facebook } from 'lucide-react';
 
 export default function Register() {
+  const base = import.meta.env.BASE_URL;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const tracks = [
@@ -10,28 +11,28 @@ export default function Register() {
       id: '01',
       title: 'Ideathon',
       desc: 'Pitch your vision. Generate bold, innovative ideas that tackle real-world challenges and present them to a panel of industry experts.',
-      logo: '/logos/Ideathon Logo.png',
+      logo: `${base}logos/Ideathon Logo.png`,
       glow: 'bg-amber-500/5 group-hover:bg-amber-500/10'
     },
     {
       id: '02',
       title: 'Hackathon',
       desc: 'Build solutions that matter. Tackle real-world problem statements and ship functional software under extreme pressure.',
-      logo: '/logos/Hackathon Logo.png',
+      logo: `${base}logos/Hackathon Logo.png`,
       glow: 'bg-blue-500/5 group-hover:bg-blue-500/10'
     },
     {
       id: '03',
       title: 'Designathon',
       desc: 'Design with intent. Solve visual communication and UX challenges, delivering polished interfaces in a strict time window.',
-      logo: '/logos/Designathon Logo.png',
+      logo: `${base}logos/Designathon Logo.png`,
       glow: 'bg-purple-500/5 group-hover:bg-purple-500/10'
     },
     {
       id: '04',
       title: 'Capture The Flag',
       desc: 'Hunt the flag. Exploit web vulnerabilities, break cryptography, reverse engineer binaries, and analyze memory dumps.',
-      logo: '/logos/Capture The Flag Logo.png',
+      logo: `${base}logos/Capture The Flag Logo.png`,
       glow: 'bg-red-500/5 group-hover:bg-red-500/10'
     }
   ];
@@ -57,7 +58,7 @@ export default function Register() {
       <header className="relative z-20 flex justify-between items-center w-full px-6 md:px-14 py-6 border-b border-white/5 bg-[#03060d]/80 backdrop-blur-md">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-7 sm:h-10 md:h-14 w-auto object-contain" />
+          <img src={`${base}logos/Cybercon'26 Logo.png`} alt="CYBERCON'26" className="h-7 sm:h-10 md:h-14 w-auto object-contain" />
         </Link>
 
         {/* Center Nav — desktop only */}
@@ -157,7 +158,7 @@ export default function Register() {
       <footer className="relative w-full bg-[#03060d] z-30 pt-16 md:pt-32 pb-10 md:pb-12 px-6 md:px-14 overflow-hidden border-t border-white/[0.05]">
         {/* katana.png — centered background image */}
         <img
-          src="/katana.png"
+          src={`${base}katana.png`}
           alt=""
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-auto object-contain opacity-60 pointer-events-none select-none"
         />
@@ -166,7 +167,7 @@ export default function Register() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 mb-16 md:mb-24">
             <div className="col-span-2">
               <div className="mb-4 md:mb-6">
-                <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-12 md:h-16 w-auto object-contain" />
+                <img src={`${base}logos/Cybercon'26 Logo.png`} alt="CYBERCON'26" className="h-12 md:h-16 w-auto object-contain" />
               </div>
               <p className="text-gray-300 text-sm max-w-sm leading-relaxed font-light">
                 Sri Lanka's only event where Builders, Designers, and Hackers compete on the same stage.

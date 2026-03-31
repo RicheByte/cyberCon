@@ -4,6 +4,7 @@ import { ArrowDown, Terminal, PenTool, Shield, Plus, Minus, Github, Linkedin, In
 import bgVid from './vid.mp4';
 
 export default function App() {
+  const base = import.meta.env.BASE_URL;
   const [openFaq, setOpenFaq] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTimeline, setActiveTimeline] = useState('Innovation Ceremony');
@@ -178,7 +179,7 @@ export default function App() {
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-14 py-6 border-b border-white/10 bg-black/60 backdrop-blur-md shadow-2xl shadow-black/50">
         {/* Logo */}
         <div className="flex items-center">
-          <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-7 sm:h-10 md:h-14 w-auto object-contain" />
+          <img src={`${base}logos/Cybercon'26 Logo.png`} alt="CYBERCON'26" className="h-7 sm:h-10 md:h-14 w-auto object-contain" />
         </div>
 
         {/* Center Nav — desktop only */}
@@ -365,7 +366,7 @@ export default function App() {
             {/* Hackathon */}
             <div className="group relative bg-[#08080a] border border-white/5 hover:border-white/15 p-8 rounded-sm transition-all duration-500 overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 rounded-full blur-[60px] group-hover:bg-blue-500/10 transition-all duration-700"></div>
-              <img src="/logos/Hackathon Logo.png" alt="Hackathon" className="w-10 h-10 object-contain mb-8 opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
+              <img src={`${base}logos/Hackathon Logo.png`} alt="Hackathon" className="w-10 h-10 object-contain mb-8 opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
               
               <div className="text-[10px] font-['Space_Grotesk'] text-gray-500 uppercase tracking-widest mb-3 flex items-center justify-between">
                 <span>Teams of 2-4</span>
@@ -385,7 +386,7 @@ export default function App() {
             {/* Designathon */}
             <div className="group relative bg-[#08080a] border border-white/5 hover:border-white/15 p-8 rounded-sm transition-all duration-500 overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-purple-500/5 rounded-full blur-[60px] group-hover:bg-purple-500/10 transition-all duration-700"></div>
-              <img src="/logos/Designathon Logo.png" alt="Designathon" className="w-10 h-10 object-contain mb-8 opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
+              <img src={`${base}logos/Designathon Logo.png`} alt="Designathon" className="w-10 h-10 object-contain mb-8 opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
               
               <div className="text-[10px] font-['Space_Grotesk'] text-gray-500 uppercase tracking-widest mb-3 flex items-center justify-between">
                 <span>Teams of 1-3</span>
@@ -405,7 +406,7 @@ export default function App() {
             {/* Ideathon */}
             <div className="group relative bg-[#08080a] border border-white/5 hover:border-white/15 p-8 rounded-sm transition-all duration-500 overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-[60px] group-hover:bg-amber-500/10 transition-all duration-700"></div>
-              <img src="/logos/Ideathon Logo.png" alt="Ideathon" className="w-10 h-10 object-contain mb-8 opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
+              <img src={`${base}logos/Ideathon Logo.png`} alt="Ideathon" className="w-10 h-10 object-contain mb-8 opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
               
               <div className="text-[10px] font-['Space_Grotesk'] text-gray-500 uppercase tracking-widest mb-3 flex items-center justify-between">
                 <span>Teams of 2-4</span>
@@ -425,7 +426,7 @@ export default function App() {
             {/* CTF Track */}
             <div className="group relative bg-[#08080a] border border-white/5 hover:border-white/15 p-8 rounded-sm transition-all duration-500 overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-red-500/5 rounded-full blur-[60px] group-hover:bg-red-500/10 transition-all duration-700"></div>
-              <img src="/logos/Capture The Flag Logo.png" alt="Capture The Flag" className="w-10 h-10 object-contain mb-8 opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
+              <img src={`${base}logos/Capture The Flag Logo.png`} alt="Capture The Flag" className="w-10 h-10 object-contain mb-8 opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
               
               <div className="text-[10px] font-['Space_Grotesk'] text-gray-500 uppercase tracking-widest mb-3 flex items-center justify-between">
                 <span>Open to All</span>
@@ -458,11 +459,11 @@ export default function App() {
           {[...Array(2)].map((_, setIdx) => (
             <div key={setIdx} className="flex items-center gap-16 md:gap-32 px-8 md:px-16">
               {[
-                { src: "/logos/Cybercon'26 Logo.png",      label: "CYBERCON'26" },
-                { src: '/logos/Hackathon Logo.png',        label: 'Hackathon' },
-                { src: '/logos/Designathon Logo.png',      label: 'Designathon' },
-                { src: '/logos/Ideathon Logo.png',         label: 'Ideathon' },
-                { src: '/logos/Capture The Flag Logo.png', label: 'Capture The Flag' },
+                { src: `${base}logos/Cybercon'26 Logo.png`,      label: "CYBERCON'26" },
+                { src: `${base}logos/Hackathon Logo.png`,        label: 'Hackathon' },
+                { src: `${base}logos/Designathon Logo.png`,      label: 'Designathon' },
+                { src: `${base}logos/Ideathon Logo.png`,         label: 'Ideathon' },
+                { src: `${base}logos/Capture The Flag Logo.png`, label: 'Capture The Flag' },
               ].map((logo, i) => (
                 <div key={i} className="flex items-center shrink-0 opacity-50 hover:opacity-90 transition-opacity duration-300 cursor-default select-none">
                   <img src={logo.src} alt={logo.label} className="h-12 md:h-16 w-auto object-contain" />
@@ -570,7 +571,7 @@ export default function App() {
         {/* Mobile / Tablet view */}
         <div className="lg:hidden w-full">
           <img
-            src="/bending.png"
+            src={`${base}bending.png`}
             alt=""
             className="w-full h-auto block"
           />
@@ -578,7 +579,7 @@ export default function App() {
         {/* Desktop view */}
         <div className="hidden lg:block w-1/2 relative overflow-hidden min-h-[600px] lg:absolute lg:top-0 lg:right-0 lg:h-full">
           <img
-            src="/bending.png"
+            src={`${base}bending.png`}
             alt=""
             className="absolute inset-0 w-full h-full object-cover object-left"
           />
@@ -662,7 +663,7 @@ export default function App() {
 
         {/* katana.png — centered background image */}
         <img
-          src="/katana.png"
+          src={`${base}katana.png`}
           alt=""
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-auto object-contain opacity-60 pointer-events-none select-none"
         />
@@ -672,7 +673,7 @@ export default function App() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 mb-16 md:mb-24">
             <div className="col-span-2">
               <div className="mb-4 md:mb-6">
-                <img src="/logos/Cybercon'26 Logo.png" alt="CYBERCON'26" className="h-12 md:h-16 w-auto object-contain" />
+                <img src={`${base}logos/Cybercon'26 Logo.png`} alt="CYBERCON'26" className="h-12 md:h-16 w-auto object-contain" />
               </div>
               <p className="text-gray-300 text-sm max-w-sm leading-relaxed font-light">
                 Where innovation collides with ambition. Where Sri Lanka's brightest minds come to compete, inspire, and create magic together.
