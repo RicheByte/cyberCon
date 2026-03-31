@@ -37,7 +37,7 @@ function ErrorBoundary({ children }) {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary>
-      <BrowserRouter>
+      <BrowserRouter basename="/cyberCOn/">
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/register" element={<Register />} />
