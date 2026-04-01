@@ -11,28 +11,28 @@ export default function Register() {
       id: '01',
       title: 'Ideathon',
       desc: 'Pitch your vision. Generate bold, innovative ideas that tackle real-world challenges and present them to a panel of industry experts.',
-      logo: `${base}logos/Ideathon Logo.png`,
+      logo: `${base}logos/Ideathon Logo.webp`,
       glow: 'bg-amber-500/5 group-hover:bg-amber-500/10'
     },
     {
       id: '02',
       title: 'Hackathon',
       desc: 'Build solutions that matter. Tackle real-world problem statements and ship functional software under extreme pressure.',
-      logo: `${base}logos/Hackathon Logo.png`,
+      logo: `${base}logos/Hackathon Logo.webp`,
       glow: 'bg-blue-500/5 group-hover:bg-blue-500/10'
     },
     {
       id: '03',
       title: 'Designathon',
       desc: 'Design with intent. Solve visual communication and UX challenges, delivering polished interfaces in a strict time window.',
-      logo: `${base}logos/Designathon Logo.png`,
+      logo: `${base}logos/Designathon Logo.webp`,
       glow: 'bg-purple-500/5 group-hover:bg-purple-500/10'
     },
     {
       id: '04',
       title: 'Capture The Flag',
       desc: 'Hunt the flag. Exploit web vulnerabilities, break cryptography, reverse engineer binaries, and analyze memory dumps.',
-      logo: `${base}logos/Capture The Flag Logo.png`,
+      logo: `${base}logos/Capture The Flag Logo.webp`,
       glow: 'bg-red-500/5 group-hover:bg-red-500/10'
     }
   ];
@@ -58,7 +58,7 @@ export default function Register() {
       <header className="relative z-20 flex justify-between items-center w-full px-6 md:px-14 py-6 border-b border-white/5 bg-[#03060d]/80 backdrop-blur-md">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={`${base}logos/Cybercon'26 Logo.png`} alt="CYBERCON'26" className="h-7 sm:h-10 md:h-14 w-auto object-contain" />
+          <img src={`${base}logos/Cybercon'26 Logo.webp`} fetchpriority="high" alt="CYBERCON'26" className="h-7 sm:h-10 md:h-14 w-auto object-contain" />
         </Link>
 
         {/* Center Nav — desktop only */}
@@ -124,7 +124,7 @@ export default function Register() {
               
               <div className="relative z-10 flex-1">
                 <div className="flex justify-between items-start mb-4">
-                  <img src={track.logo} alt={track.title} className="w-16 sm:w-20 md:w-28 h-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+                  <img src={track.logo} alt={track.title} loading="lazy" decoding="async" className="w-16 sm:w-20 md:w-28 h-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
                   <span className="text-[10px] font-['Space_Grotesk'] text-white/20 uppercase tracking-widest">{track.id}</span>
                 </div>
                 
@@ -156,10 +156,12 @@ export default function Register() {
 
       {/* FOOTER */}
       <footer className="relative w-full bg-[#03060d] z-30 pt-16 md:pt-32 pb-10 md:pb-12 px-6 md:px-14 overflow-hidden border-t border-white/[0.05]">
-        {/* katana.png — centered background image */}
+        {/* katana.webp — centered background image */}
         <img
-          src={`${base}katana.png`}
+          src={`${base}katana.webp`}
           alt=""
+          loading="lazy"
+          decoding="async"
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-auto object-contain opacity-60 pointer-events-none select-none"
         />
 
@@ -167,7 +169,7 @@ export default function Register() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 mb-16 md:mb-24">
             <div className="col-span-2">
               <div className="mb-4 md:mb-6">
-                <img src={`${base}logos/Cybercon'26 Logo.png`} alt="CYBERCON'26" className="h-12 md:h-16 w-auto object-contain" />
+                <img src={`${base}logos/Cybercon'26 Logo.webp`} alt="CYBERCON'26" loading="lazy" decoding="async" className="h-12 md:h-16 w-auto object-contain" />
               </div>
               <p className="text-gray-300 text-sm max-w-sm leading-relaxed font-light">
                 Sri Lanka's only event where Builders, Designers, and Hackers compete on the same stage.
