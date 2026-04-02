@@ -54,17 +54,19 @@ export default function App() {
     let targetTime = 0;
     let currentTime = 0;
     let rafId = null;
+    let lastScrollTime = 0;
+    const scrollThrottle = 1000 / 30; // 30fps throttle for scroll handling
 
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const lerpFactor = isMobile ? 0.3 : 0.1;
-    const snapThreshold = isMobile ? 0.1 : 0.05;
-    const seekThreshold = isMobile ? 0.05 : 0.01;
+    const lerpFactor = isMobile ? 0.25 : 0.08; // Reduced lerp for smoother interpolation
+    const snapThreshold = isMobile ? 0.15 : 0.08;
+    const seekThreshold = 0.02; // Unified threshold for better seeking
 
     const lerp = (start, end, factor) => start + (end - start) * factor;
 
     const tick = () => {
       const video = videoRef.current;
-      if (!video) return;
+      if (!video || video.paused === false) return;
 
       currentTime = lerp(currentTime, targetTime, lerpFactor);
 
@@ -72,9 +74,12 @@ export default function App() {
         currentTime = targetTime;
       }
 
-      if (!video.seeking) {
-        if (Math.abs(video.currentTime - currentTime) > seekThreshold) {
+      // Only seek if not already seeking and threshold exceeded
+      if (!video.seeking && Math.abs(video.currentTime - currentTime) > seekThreshold) {
+        try {
           video.currentTime = currentTime;
+        } catch (e) {
+          // Silently ignore seek errors during buffering
         }
       }
 
@@ -86,6 +91,14 @@ export default function App() {
     };
 
     const handleScroll = () => {
+      const now = Date.now();
+      
+      // Throttle scroll events to 30fps
+      if (now - lastScrollTime < scrollThrottle) {
+        return;
+      }
+      lastScrollTime = now;
+
       const video = videoRef.current;
       const container = heroContainerRef.current;
       if (!video || !container || !video.duration) return;
@@ -138,6 +151,8 @@ export default function App() {
           animation: marquee 24s linear infinite;
           display: flex;
           width: max-content;
+          will-change: transform;
+          transform: translateZ(0);
         }
         .animate-marquee:hover {
           animation-play-state: paused;
@@ -146,6 +161,7 @@ export default function App() {
         html, body {
           overflow-x: clip;
           background-color: #03060d;
+          overscroll-behavior: none;
         }
 
         .cyber-grid {
@@ -264,17 +280,15 @@ export default function App() {
           <video 
             ref={videoRef}
             src={bgVid} 
-            className="absolute inset-0 w-full h-full object-cover object-top translate-y-[10vh] md:translate-y-[12vh] scale-[1.02] will-change-contents"
+            className="absolute inset-0 w-full h-full object-cover object-top translate-y-[10vh] md:translate-y-[12vh] scale-[1.02]"
             muted
             playsInline
-            autoPlay
             loop
-            preload="auto"
+            preload="metadata"
             decoding="async"
             onLoadedMetadata={() => {
               if (videoRef.current) {
                 videoRef.current.pause();
-                videoRef.current.currentTime = 0;
               }
             }}
           />
