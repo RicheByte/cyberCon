@@ -609,6 +609,18 @@ export default function App() {
 
       </section>
 
+      <section className="relative w-full bg-[#03060d] z-30 py-12 md:py-20 text-center">
+        <p className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-500 mb-4">Ready?</p>
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-[-0.04em] text-white mb-8">Prove You're the Best.</h2>
+        <a href="/register" className="group inline-flex items-center gap-2 border border-white/30 bg-white/5 rounded-sm px-8 py-4 text-[10px] font-['Space_Grotesk',sans-serif] uppercase tracking-widest text-gray-300 hover:bg-white hover:text-black active:bg-white active:text-black active:shadow-[0_0_30px_rgba(255,255,255,0.9)] active:scale-95 active:duration-75 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]">
+          <span className="relative flex h-2 w-2 mr-1">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-white group-hover:bg-black group-active:bg-black"></span>
+          </span>
+          Register Now
+        </a>
+      </section>
+
       {/* =========================================
           COMMAND & INTEL (CONTACT)
           ========================================= */}
