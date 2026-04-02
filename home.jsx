@@ -252,6 +252,8 @@ export default function App() {
             className="absolute inset-0 w-full h-full object-cover object-top translate-y-[10vh] md:translate-y-[12vh] scale-[1.02]"
             muted
             playsInline
+            autoPlay
+            loop
             preload="auto"
             onLoadedMetadata={() => {
               if (videoRef.current) {
