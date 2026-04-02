@@ -64,11 +64,17 @@ export default function App() {
       currentTime = lerp(currentTime, targetTime, 0.1);
 
       // Snap when close enough to avoid endless tiny updates
-      if (Math.abs(currentTime - targetTime) < 0.01) {
+      if (Math.abs(currentTime - targetTime) < 0.05) {
         currentTime = targetTime;
       }
 
-      video.currentTime = currentTime;
+      // Prevents overwhelming mobile decoders by only seeking if the last seek finished
+      if (!video.seeking) {
+        // Only set it if there's a meaningful change to avoid redundant stalls
+        if (Math.abs(video.currentTime - currentTime) > 0.01) {
+          video.currentTime = currentTime;
+        }
+      }
 
       if (currentTime !== targetTime) {
         rafId = requestAnimationFrame(tick);
