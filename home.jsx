@@ -55,23 +55,25 @@ export default function App() {
     let currentTime = 0;
     let rafId = null;
 
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const lerpFactor = isMobile ? 0.3 : 0.1;
+    const snapThreshold = isMobile ? 0.1 : 0.05;
+    const seekThreshold = isMobile ? 0.05 : 0.01;
+
     const lerp = (start, end, factor) => start + (end - start) * factor;
 
     const tick = () => {
       const video = videoRef.current;
       if (!video) return;
 
-      currentTime = lerp(currentTime, targetTime, 0.1);
+      currentTime = lerp(currentTime, targetTime, lerpFactor);
 
-      // Snap when close enough to avoid endless tiny updates
-      if (Math.abs(currentTime - targetTime) < 0.05) {
+      if (Math.abs(currentTime - targetTime) < snapThreshold) {
         currentTime = targetTime;
       }
 
-      // Prevents overwhelming mobile decoders by only seeking if the last seek finished
       if (!video.seeking) {
-        // Only set it if there's a meaningful change to avoid redundant stalls
-        if (Math.abs(video.currentTime - currentTime) > 0.01) {
+        if (Math.abs(video.currentTime - currentTime) > seekThreshold) {
           video.currentTime = currentTime;
         }
       }
@@ -149,6 +151,13 @@ export default function App() {
         .cyber-grid {
           background-image: linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
           background-size: 50px 50px;
+        }
+
+        @media (max-width: 768px) {
+          video {
+            pointer-events: none;
+            transform: translateY(10vh) !important;
+          }
         }
 
         .clip-edges {
@@ -255,12 +264,13 @@ export default function App() {
           <video 
             ref={videoRef}
             src={bgVid} 
-            className="absolute inset-0 w-full h-full object-cover object-top translate-y-[10vh] md:translate-y-[12vh] scale-[1.02]"
+            className="absolute inset-0 w-full h-full object-cover object-top translate-y-[10vh] md:translate-y-[12vh] scale-[1.02] will-change-contents"
             muted
             playsInline
             autoPlay
             loop
             preload="auto"
+            decoding="async"
             onLoadedMetadata={() => {
               if (videoRef.current) {
                 videoRef.current.pause();
