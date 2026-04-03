@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowDown, Terminal, PenTool, Shield, Plus, Minus, Github, Linkedin, Instagram, Facebook, Lightbulb } from 'lucide-react';
+import { ArrowDown, Terminal, PenTool, Shield, Plus, Minus, Github, Instagram, Facebook, Lightbulb } from 'lucide-react';
 import bgVid from './vid.mp4';
 
 export default function App() {
@@ -49,6 +49,25 @@ export default function App() {
       { date: "May 25", title: "CTF Finals Day", desc: "Intense on-site cyber warfare.", baseDot: "bg-red-500 shadow-[0_0_20px_rgba(239,68,68,0.5)]", hoverDot: "group-hover:scale-125", highlight: true }
     ]
   };
+
+  // Handle hash anchor scrolling
+  useEffect(() => {
+    const scrollToAnchor = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    };
+
+    scrollToAnchor();
+    window.addEventListener('hashchange', scrollToAnchor);
+    return () => window.removeEventListener('hashchange', scrollToAnchor);
+  }, []);
 
   useEffect(() => {
     let targetTime = 0;
@@ -215,7 +234,7 @@ export default function App() {
 
         {/* Center Nav — desktop only */}
         <nav className="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.15em] font-['Space_Grotesk',sans-serif] font-medium text-gray-300 pt-1">
-          <a href="#about" className="hover:text-white transition-colors duration-300 drop-shadow-md">Event</a>
+          <a href="#" className="hover:text-white transition-colors duration-300 drop-shadow-md">Home</a>
           <a href="#tracks" className="hover:text-white transition-colors duration-300 drop-shadow-md">Tracks</a>
           <a href="#timeline" className="hover:text-white transition-colors duration-300 drop-shadow-md">Timeline</a>
           <a href="#contact" className="hover:text-white transition-colors duration-300 drop-shadow-md">Contact</a>
@@ -246,7 +265,7 @@ export default function App() {
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden fixed top-[80px] left-0 right-0 z-40 bg-[#03060d]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-6 shadow-2xl">
-          <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Event</a>
+          <a href="#" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Home</a>
           <a href="#tracks" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Tracks</a>
           <a href="#timeline" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Timeline</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Contact</a>
@@ -312,7 +331,7 @@ export default function App() {
               Four tracks. One mission. Prove you're the best in the game.
             </p>
             <div className="text-2xl font-medium tracking-[-0.04em] leading-none text-white/80 mb-2">
-              April 04<sup className="text-sm -top-2">th</sup>, 202.0
+              May 23<sup className="text-sm -top-2">rd</sup>, 2026
             </div>
             <div className="text-gray-500 text-sm font-light tracking-wide mb-10">ICT club of saegis campus</div>
             
@@ -358,8 +377,8 @@ export default function App() {
           {/* Bottom Right: Date & Location */}
           <div className="hidden md:block md:absolute md:bottom-[5%] md:right-0 text-right">
             <div className="text-6xl lg:text-7xl font-medium tracking-[-0.04em] leading-none mb-2 drop-shadow-lg">
-              April<br />
-              04<sup className="text-4xl -top-4">th</sup>, 202.0
+              May<br />
+              23<sup className="text-4xl -top-4">rd</sup>, 2026
             </div>
             <div className="text-gray-400 text-base font-light tracking-wide">
               ICT club of saegis campus
@@ -743,18 +762,17 @@ export default function App() {
             <div>
               <h4 className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-300 mb-6">Network</h4>
               <ul className="space-y-4 text-sm text-gray-300 font-light">
-                <li><a href="#" className="hover:text-white transition-colors flex items-center gap-3"><Linkedin className="w-4 h-4 text-white/40"/> LinkedIn</a></li>
-                <li><a href="#" className="hover:text-white transition-colors flex items-center gap-3"><Instagram className="w-4 h-4 text-white/40"/> Instagram</a></li>
-                <li><a href="#" className="hover:text-white transition-colors flex items-center gap-3"><Facebook className="w-4 h-4 text-white/40"/> Facebook</a></li>
+                <li><a href="https://www.instagram.com/ictclub.saegis/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-3"><Instagram className="w-4 h-4 text-white/40"/> Instagram</a></li>
+                <li><a href="https://web.facebook.com/profile.php?id=61566920007667" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-3"><Facebook className="w-4 h-4 text-white/40"/> Facebook</a></li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-400 font-['Space_Grotesk'] tracking-[0.15em] uppercase">
-            <div>© 202.0 ICTS, ICT club of saegis campus. All rights reserved.</div>
+            <div>© 2026 ICTS, ICT club of saegis campus. All rights reserved.</div>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
+              <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+              <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
             </div>
           </div>
 

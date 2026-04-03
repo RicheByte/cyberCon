@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Download, ExternalLink, Linkedin, Instagram, Facebook } from 'lucide-react';
+import { ArrowLeft, Download, ExternalLink, Instagram, Facebook } from 'lucide-react';
 
 export default function Register() {
   const base = import.meta.env.BASE_URL;
@@ -63,7 +63,7 @@ export default function Register() {
 
         {/* Center Nav — desktop only */}
         <nav className="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.15em] font-['Space_Grotesk',sans-serif] font-medium text-gray-300 pt-1">
-          <a href="/#about" className="hover:text-white transition-colors">Event</a>
+          <a href="/#" className="hover:text-white transition-colors">Home</a>
           <a href="/#tracks" className="hover:text-white transition-colors">Tracks</a>
           <a href="/#timeline" className="hover:text-white transition-colors">Timeline</a>
           <a href="/#contact" className="hover:text-white transition-colors">Contact</a>
@@ -91,7 +91,7 @@ export default function Register() {
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-[80px] left-0 right-0 z-30 bg-[#03060d]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-6">
-          <a href="/#about" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Event</a>
+          <a href="/#" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Home</a>
           <a href="/#tracks" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Tracks</a>
           <a href="/#timeline" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Timeline</a>
           <a href="/#contact" onClick={() => setMobileMenuOpen(false)} className="text-sm uppercase tracking-[0.15em] font-['Space_Grotesk'] text-gray-300 hover:text-white transition-colors">Contact</a>
@@ -142,11 +142,11 @@ export default function Register() {
                   </a>
                 ) : (
                   <button disabled className="flex-1 flex items-center justify-center gap-2 bg-gray-600 text-gray-300 px-6 py-4 rounded-sm text-[10px] md:text-[11px] font-['Space_Grotesk'] uppercase tracking-widest cursor-not-allowed opacity-60">
-                    Coming Soon
+                    Upcoming
                   </button>
                 )}
                 <button className="flex-1 flex items-center justify-center gap-2 border border-white/20 bg-transparent text-white px-6 py-4 rounded-sm text-[10px] md:text-[11px] font-['Space_Grotesk'] uppercase tracking-widest hover:bg-white/5 hover:border-white/40 transition-all">
-                  Handbook <Download className="w-3.5 h-3.5" />
+                  {track.id === '01' ? 'Handbook' : 'Upcoming'} <Download className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
@@ -189,18 +189,17 @@ export default function Register() {
             <div>
               <h4 className="text-[10px] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-gray-300 mb-6">Network</h4>
               <ul className="space-y-4 text-sm text-gray-300 font-light">
-                <li><a href="#" className="hover:text-white transition-colors flex items-center gap-3"><Linkedin className="w-4 h-4 text-white/40"/> LinkedIn</a></li>
-                <li><a href="#" className="hover:text-white transition-colors flex items-center gap-3"><Instagram className="w-4 h-4 text-white/40"/> Instagram</a></li>
-                <li><a href="#" className="hover:text-white transition-colors flex items-center gap-3"><Facebook className="w-4 h-4 text-white/40"/> Facebook</a></li>
+                <li><a href="https://www.instagram.com/ictclub.saegis/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-3"><Instagram className="w-4 h-4 text-white/40"/> Instagram</a></li>
+                <li><a href="https://web.facebook.com/profile.php?id=61566920007667" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-3"><Facebook className="w-4 h-4 text-white/40"/> Facebook</a></li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-400 font-['Space_Grotesk'] tracking-[0.15em] uppercase">
-            <div>© 202.0 ICTS, Faculty of Technology, USJ. All rights reserved.</div>
+            <div>© 2026 ICTS, Faculty of Technology, USJ. All rights reserved.</div>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
+              <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+              <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
             </div>
           </div>
         </div>
